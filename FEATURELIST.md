@@ -1,3 +1,4 @@
+# Planned features
 * Featured as a plugin for Unity - Determine how to implement an importable UI based tool for Unity. This can be done by analysing other similar tools.
 * GLSL to HLSL (Direct integration with ShaderToy) - Using code from [ShaderMan](https://github.com/smkplus/ShaderMan), we plan to implement a tool to automatically convert between web GLSL and HLSL Unity shaders. smkplus's ShaderMan tool supposedly does this, but it does not seem to function on modern Unity.
 * U# Code Snippet Library - A feature to allow users to search using keywords for plugins they might find useful, and perhaps even add their own. Perhaps we can use the library available at [VRCPrefabs.com](https://vrcprefabs.com/)
