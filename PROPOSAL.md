@@ -11,8 +11,8 @@ In addition to Udon# features, we also plan to implement VRC Avatar SDK Creation
 With VRChat now having nearly 15,000 daily active users, the need for development tools to the poorly documented VRChat-specific Udon language grows every day.
 Using industry-standard software development techniques, many of which exist in the realm of "Software Supply Chain", we can hopefully save VRChat developers countless hours.
 By implementing these techniques, we can allow developers to program more efficiently, more smartly, and with less barrier-to-entry, which is important for a platform that may be home to more less-experienced programmers.
-## Proposed features
-The proposed U# features include:
+## Proposed Solution and Technology
+The proposed U# features to solve this customer need include:
 * **U# Code Snippet Library** to save developers time by avoiding "re-inventing the wheel" 
 * **U# GitHub Code Search** to allow developers to search GitHub for publicly available U# code. 
 * **U# Autocomplete** to implement an IntelliSense like plugin for U# 
@@ -21,6 +21,9 @@ Additional features include
 * **Featured as a plugin for Unity** We plan to implement this as an importable UI based tool for Unity.
 * **GLSL to HLSL conversion** (Plus, direct integration with ShaderToy) - Using code from [ShaderMan](https://github.com/smkplus/ShaderMan), we plan to implement a tool to automatically convert between web GLSL and HLSL Unity shaders. smkplus's ShaderMan tool supposedly does this, but it does not seem to function on modern Unity.
 * **Avatar Toggle Generator** to automate tedious avatar creation tasks
+## Team
+Concerning the team members, the level of exposure and skill in regards to both U# and Unity vary significantly. While Bryce has experience in 3D modeling, U#, and Unity, Damian has practically none. However, neither of us have built anything like the developer tool we are intending to implement this semester.
+At the moment, we have not designated specific roles for each team member, however with timie it may become apparent that there is some sort of role system in place. For now though, Damian is looking into Unity and U# as a fresh beginner while Bryce is full steam ahead.
 ## Requirements
 Specifics on requirements are dependent on which features we are able to fully implement. Details about some of these will be explained below in the *Timeline* subsection.
 For Sprint 2, we aim to have some form of UI that is able to be installed in Unity. To do so, all developers must have access to the repo, to Unity, and to the VRChat SDK.
