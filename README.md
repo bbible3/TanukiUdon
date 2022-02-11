@@ -4,11 +4,9 @@
 </p>
 TanukiUdon is a suite of developer tools to make developing in Unity easier and more fun. Specifically, TanukiUdon features tools to enable speedy world and avatar creation for VRChat's SDK via Udon Sharp (U#).
 
-## Planned Features
-- Featured as a plugin for Unity
-- GLSL to HLSL (Direct integration with ShaderToy)
-- U# Code Snippet Library
-- U# GitHub Code Search
-- U# Autocomplete (IntelliSense style)
-- U# Documentation & Helper (Clippy?)
-- Avatar Toggle Generator
+## Proposal
+[View the project proposal at PROPOSAL.md](PROPOSAL.md)
+
+## Progress
+Currently in progress on Milestone 1. On track to finish on time.
+*Note: Unity Collaboration tools are being used for portions of this project. Some unsynced content in the [Unity-Home-Tanuki-Udon](Unity-Home-Tanuki-Udon/) folder might be available for download from Unity's servers. Assume that Unity's version is the latest, and push/overwrite to GitHub each time.
