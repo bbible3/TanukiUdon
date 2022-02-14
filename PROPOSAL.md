@@ -36,3 +36,12 @@ Once we have reached this goal as well as successfully implemented at least one 
 VRChat development is a constantly changing, new field - so the feasability of some of these features is yet to be fully determined.
 However, all of the tools and resources to do so are freely available, and *something* is possible for sure. Luckily there are no social, ethical, or legal constrints that will prevent us from accmplishing these tasks either.
 ## Timeline
+Using the Sprint and Milestone based timeline we are planning, each two week period will consist of multiple smaller goals/tasks to be divided across team members. The first Sprint involves setting up the workspace, version control, ideas, and proposal. This sprint officially ended on Feb 11. The second Sprint's goal is to create a functional UI that is able to interface with Unity. This might be an incredibly simple milestone, but our team is not yet entirely clear on the process, so it must be figured out as we go along. The general timeline of milestones should look something like this
+* **Sprint 1**: Setup & Goals (~1.5 weeks)... setting up objectives, dividing work, writing proposal
+* **Sprint 2**: Installable Unity Asset... learning the UI system, implementing basic features (~1.5 weeks)
+* **Sprint 3**: First useful feature... likely implementing ShaderMan's code (>1.5 weeks)
+* **Sprint 4**: Second set of features (at least one per team member)... Probably start with Snippet Library, Documentation? (~2 weeks)
+* **Sprint 5**: Third set of features... Auto Complete, Code Saerch (~2 weeks)
+* **Sprint 6**: Thorough testing, more features, etc...
+
+This is about 8 weeks of sprint content, and it is reasonable to assume a few days of testing between each sprint, as well as delays. With such a timeline, it should be straightforward to achieve project requirements and potentially be able to implement additional features like animation and toggle generators.
