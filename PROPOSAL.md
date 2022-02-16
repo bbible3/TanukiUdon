@@ -41,7 +41,7 @@ Using the Sprint and Milestone based timeline we are planning, each two week per
 * **Sprint 2**: Installable Unity Asset... learning the UI system, implementing basic features (~1.5 weeks)
 * **Sprint 3**: First useful feature... likely implementing ShaderMan's code (>1.5 weeks)
 * **Sprint 4**: Second set of features (at least one per team member)... Probably start with Snippet Library, Documentation? (~2 weeks)
-* **Sprint 5**: Third set of features... Auto Complete, Code Saerch (~2 weeks)
+* **Sprint 5**: Third set of features... Auto Complete, Code Search (~2 weeks)
 * **Sprint 6**: Thorough testing, more features, etc...
 
 This is about 8 weeks of sprint content, and it is reasonable to assume a few days of testing between each sprint, as well as delays. With such a timeline, it should be straightforward to achieve project requirements and potentially be able to implement additional features like animation and toggle generators.
