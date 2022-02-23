@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using VRC.SDK3.Components;
+using VRC.Udon;
+using UdonSharp;
+using UdonSharpEditor;
+
 public class TanukiUdonWindow : EditorWindow
 {
     //Display settings for Pickup Tools dropdown
@@ -57,6 +61,17 @@ public class TanukiUdonWindow : EditorWindow
 
                 }
             }
+
+            GUILayout.Space(25f);
+
+            if (GUILayout.Button("Convert selected to Teleporter"))
+			{
+                foreach (GameObject obj in Selection.gameObjects)
+				{
+
+                    obj.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
+				}
+			}
         }
     }
 }
