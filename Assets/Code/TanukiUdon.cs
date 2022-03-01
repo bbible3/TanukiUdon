@@ -86,19 +86,18 @@ public class TanukiUdonWindow : EditorWindow
         }
         sourceTeleporter = EditorGUILayout.ObjectField("Source Teleporter", sourceTeleporter, typeof(GameObject), true) as GameObject;
         targetTeleporter = EditorGUILayout.ObjectField("Target Teleporter", targetTeleporter, typeof(GameObject), true) as GameObject;
-       
         if (GUILayout.Button("Make To-From Teleporter Loop"))
 		{
             sourceTeleporter.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
-            targetTeleporter.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
-
-            sourceTeleporter.GetComponent<Tanuki.TanukiTeleporter>().lerpOnRemote = true;
-            //st.lerpOnRemote = true;
-            //st.teleportTo = targetTeleporter.transform;
-            Debug.Log(sourceTeleporter);
-            //sourceTeleporter<Tanuki.TanukiTeleporter>().teleportTo = targetTeleporter;
-            //targetTeleporter.TanukiTeleporter.teleportTo = sourceTeleporter;
-            Debug.Log("Should have made loop");
+            Tanuki.TanukiTeleporter sourceChild = sourceTeleporter.GetUdonSharpComponent<Tanuki.TanukiTeleporter>();
+            sourceChild.lerpOnRemote = true;
+		}
+        if (GUILayout.Button("Test lerp"))
+		{
+            Tanuki.TanukiTeleporter sourceTanukiTeleporter = sourceTeleporter.GetUdonSharpComponent<Tanuki.TanukiTeleporter>();
+            sourceTanukiTeleporter.UpdateProxy();
+            sourceTanukiTeleporter.lerpOnRemote = true;
+            sourceTanukiTeleporter.ApplyProxyModifications();
 		}
     }
 }
