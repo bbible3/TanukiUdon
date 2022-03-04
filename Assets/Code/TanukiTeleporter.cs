@@ -14,13 +14,9 @@ namespace Tanuki
         public Transform teleportTo;
         public VRC_SceneDescriptor.SpawnOrientation teleportOrientation = VRC_SceneDescriptor.SpawnOrientation.AlignPlayerWithSpawnPoint;
         public bool lerpOnRemote = false;
-
-        public virtual void OnPlayerTriggerEnter(VRC.SDKBase.VRCPlayerApi player)
+        public override void Interact()
 		{
-            if (player.isLocal)
-			{
-                player.TeleportTo(teleportTo.position, teleportTo.rotation, teleportOrientation, lerpOnRemote);
-			}
+                Networking.LocalPlayer.TeleportTo(teleportTo.position, teleportTo.rotation, teleportOrientation, lerpOnRemote);
 		}
     }
 }

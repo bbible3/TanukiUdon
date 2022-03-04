@@ -4,7 +4,6 @@ using VRC.SDK3.Components;
 using VRC.Udon;
 using UdonSharp;
 using UdonSharpEditor;
-
 public class TanukiUdonWindow : EditorWindow
 {
     public static TanukiUdonWindow window;
@@ -27,6 +26,8 @@ public class TanukiUdonWindow : EditorWindow
     bool pickupUsePhysics = true;
     string pickupString = "Action Text";
     string interactionString = "Hover Text";
+
+    string useTeleporterString = "Use";
 
     // Display settings for Teleporter Tools dropdown
     bool showTeleporterTools = true;
@@ -125,6 +126,7 @@ public class TanukiUdonWindow : EditorWindow
 
         // Create the Teleporter Tools dropdown group
         showTeleporterTools = EditorGUILayout.Foldout(showTeleporterTools, "Teleporter Tools");
+        useTeleporterString = EditorGUILayout.TextField("Interaction Text", useTeleporterString);
         if (showTeleporterTools)
 		{
             
@@ -133,7 +135,12 @@ public class TanukiUdonWindow : EditorWindow
                 foreach (GameObject obj in Selection.gameObjects)
 				{
                     obj.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
-				}
+
+                    //To change InteractionText, we must get the UdonBehaviour component
+                    UdonBehaviour objBeh = obj.GetComponent<UdonBehaviour>();
+                    objBeh.InteractionText = useTeleporterString;
+    
+                }
 			}
             if (GUILayout.Button("Convert selected to Non-Teleporter"))
 			{
@@ -146,16 +153,24 @@ public class TanukiUdonWindow : EditorWindow
             targetGO = EditorGUILayout.ObjectField("Target Teleporter", targetGO, typeof(GameObject), true) as GameObject;
             if (GUILayout.Button("Make To-From Teleporter Loop"))
             {
+                //Add and apply teleporter
                 sourceGO.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
                 Tanuki.TanukiTeleporter sourceTele = sourceGO.GetUdonSharpComponent<Tanuki.TanukiTeleporter>();
                 //sourceTele.UpdateProxy();
                 sourceTele.teleportTo = targetGO.transform;
                 sourceTele.ApplyProxyModifications();
                 
+                //Change InteractionText
+                UdonBehaviour objBeh = sourceTele.GetComponent<UdonBehaviour>();
+                objBeh.InteractionText = useTeleporterString;
+
                 targetGO.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
                 Tanuki.TanukiTeleporter targetTele = targetGO.GetUdonSharpComponent<Tanuki.TanukiTeleporter>();
                 targetTele.teleportTo = sourceGO.transform;
                 targetTele.ApplyProxyModifications();
+
+                UdonBehaviour objBeh2 = targetTele.GetComponent<UdonBehaviour>();
+                objBeh2.InteractionText = useTeleporterString;
             }
         }
         EditorGUILayout.EndVertical();
