@@ -1,7 +1,6 @@
 For our test case, TanukiUdon would like to conduct real-world usage tests with a combination of new, as well as experienced VRChat world developers. 
 The goal of this project is to lower the bar of entry to world development, as well as reduce time manually performing repeatable tasks. 
-
-
+    
     |ID | Component     | Test case type  | Description                                                                        | Pass or Fail |
     |---|---------------|-----------------|------------------------------------------------------------------------------------|--------------|
     | 1 | Installation  | Functionality   |Ensure the package installation procedure runs easily and without error             | -            | 
