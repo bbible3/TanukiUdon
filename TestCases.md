@@ -12,3 +12,9 @@ The goal of this project is to lower the bar of entry to world development, as w
 Initially, we deem it preferable to begin testing with less experienced developers, so we can quickly determine necessary changes. We have determined 
 multiple first candidates for testing, and ideally these tests will be conducted in person so we can monitor not only the end results but the individual's
 interactions with the tool in general. Later down the road, we will advance to testing with more experienced developers as well.
+
+## Amost always imports
+
+|  R |  Python |    Matlab |
+| --------- |:---|:---------|:-----|
+| library(tidyverse) |import numpy as np|
