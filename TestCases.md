@@ -4,9 +4,9 @@ The goal of this project is to lower the bar of entry to world development, as w
 
     |ID | Component     | Test case type  | Description                                                                        | Pass or Fail |
     |---|---------------|-----------------|------------------------------------------------------------------------------------|--------------|
-    | 1 | Installation  | Functionality   | Ensure the package installation procedure runs easily and without error            | -            | 
-    | 2 | Backend       | Performance     | Ensure GameObjects are successfully converted to pickup even with a high number    | -            | 
-    | 3 | UI            | Usability       | Ensure that the program layout and interaction is intuitive to fellow developers   | -            | 
+    | 1 | Installation  | Functionality   |Ensure the package installation procedure runs easily and without error             | -            | 
+    | 2 | Backend       | Performance     |Ensure GameObjects are successfully converted to pickup even with a high number     | -            | 
+    | 3 | UI            | Usability       |Ensure that the program layout and interaction is intuitive to fellow developers    | -            | 
 
 
 Initially, we deem it preferable to begin testing with less experienced developers, so we can quickly determine necessary changes. We have determined 
