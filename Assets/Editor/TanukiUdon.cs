@@ -33,6 +33,11 @@ public class TanukiUdonWindow : EditorWindow
     bool showTeleporterTools = true;
     GameObject sourceGO, targetGO;
 
+    string teleporterMode = "Interact Teleporter";
+
+    int _t_selected = 0;
+    string[] _t_options = new string[2] { "Interact Teleporter", "Region Teleporter" };
+
     void InitializeStyles()
     {
         titleGUIStyle = new GUIStyle();
@@ -105,6 +110,7 @@ public class TanukiUdonWindow : EditorWindow
             {
                 Debug.Log("Converting to pickup...");
                 //For all selected gameobjects
+                int countMakePickup = 0;
                 foreach (GameObject obj in Selection.gameObjects)
                 {
                     //Set components as necessary
@@ -115,8 +121,9 @@ public class TanukiUdonWindow : EditorWindow
                     rigidbody.isKinematic = !pickupUsePhysics;
                     pickup.UseText = pickupString;
                     pickup.InteractionText = interactionString;
-
+                    countMakePickup++;
                 }
+                EditorUtility.DisplayDialog("Converted to pickup", "Successfully converted " + countMakePickup + " items to pickups.", "Arigato!");
             }    
         }
         EditorGUILayout.EndVertical();
@@ -132,52 +139,119 @@ public class TanukiUdonWindow : EditorWindow
             
             if (GUILayout.Button("Convert selected to Teleporter"))
 			{
+                int countMakeTeleporter = 0;
                 foreach (GameObject obj in Selection.gameObjects)
 				{
-                    obj.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
-
+                    if (teleporterMode == "Interact Teleporter")
+                    {
+                        obj.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
+                    }
+                    else if (teleporterMode == "Region Teleporter")
+                    {
+                        obj.AddUdonSharpComponent<Tanuki.TanukiTeleporterRegion>();
+                        obj.GetComponent<BoxCollider>().isTrigger = true;
+                    }
                     //To change InteractionText, we must get the UdonBehaviour component
                     UdonBehaviour objBeh = obj.GetComponent<UdonBehaviour>();
                     objBeh.InteractionText = useTeleporterString;
-    
+                    countMakeTeleporter++;
                 }
-			}
+                EditorUtility.DisplayDialog("Converted to teleporter", "Successfully converted " + countMakeTeleporter + " items into " + teleporterMode + ". You must assign their destination manually.", "Arigato!");
+
+            }
             if (GUILayout.Button("Convert selected to Non-Teleporter"))
 			{
+                int countRemoveTeleporter = 0;
                 foreach (GameObject obj in Selection.gameObjects)
 				{
-                    UdonSharpEditorUtility.DestroyImmediate(obj.GetUdonSharpComponent<Tanuki.TanukiTeleporter>());
-				}
-			}
+                    try
+                    {
+                        UdonSharpEditorUtility.DestroyImmediate(obj.GetUdonSharpComponent<Tanuki.TanukiTeleporter>());
+                    }
+                    catch
+					{
+                        Debug.Log("Failed to find TanukiTeleporter");
+					}
+                    try
+					{
+                        UdonSharpEditorUtility.DestroyImmediate(obj.GetUdonSharpComponent<Tanuki.TanukiTeleporterRegion>());
+
+                    }
+                    catch
+					{
+                        Debug.Log("Failed to find TanukiTeleporterRegion");
+                    }
+
+                    countRemoveTeleporter++;
+
+                }
+                EditorUtility.DisplayDialog("Removed teleporter", "Successfully removed " + countRemoveTeleporter + " teleporters.", "Arigato!");
+
+            }
             sourceGO = EditorGUILayout.ObjectField("Source Teleporter", sourceGO, typeof(GameObject), true) as GameObject;
             targetGO = EditorGUILayout.ObjectField("Target Teleporter", targetGO, typeof(GameObject), true) as GameObject;
             if (GUILayout.Button("Make To-From Teleporter Loop"))
             {
-                //Add and apply teleporter
-                sourceGO.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
-                Tanuki.TanukiTeleporter sourceTele = sourceGO.GetUdonSharpComponent<Tanuki.TanukiTeleporter>();
-                //sourceTele.UpdateProxy();
-                sourceTele.teleportTo = targetGO.transform;
-                sourceTele.ApplyProxyModifications();
-                
-                //Change InteractionText
-                UdonBehaviour objBeh = sourceTele.GetComponent<UdonBehaviour>();
-                objBeh.InteractionText = useTeleporterString;
+                //We should make this a function when we refactor
+                if (teleporterMode == "Interact Teleporter")
+                {
+                    //Add and apply teleporter
+                    sourceGO.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
+                    Tanuki.TanukiTeleporter sourceTele = sourceGO.GetUdonSharpComponent<Tanuki.TanukiTeleporter>();
+                    //sourceTele.UpdateProxy();
+                    sourceTele.teleportTo = targetGO.transform;
+                    sourceTele.ApplyProxyModifications();
 
-                targetGO.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
-                Tanuki.TanukiTeleporter targetTele = targetGO.GetUdonSharpComponent<Tanuki.TanukiTeleporter>();
-                targetTele.teleportTo = sourceGO.transform;
-                targetTele.ApplyProxyModifications();
+                    //Change InteractionText
+                    UdonBehaviour objBeh = sourceTele.GetComponent<UdonBehaviour>();
+                    objBeh.InteractionText = useTeleporterString;
 
-                UdonBehaviour objBeh2 = targetTele.GetComponent<UdonBehaviour>();
-                objBeh2.InteractionText = useTeleporterString;
+                    targetGO.AddUdonSharpComponent<Tanuki.TanukiTeleporter>();
+                    Tanuki.TanukiTeleporter targetTele = targetGO.GetUdonSharpComponent<Tanuki.TanukiTeleporter>();
+                    targetTele.teleportTo = sourceGO.transform;
+                    targetTele.ApplyProxyModifications();
+
+                    UdonBehaviour objBeh2 = targetTele.GetComponent<UdonBehaviour>();
+                    objBeh2.InteractionText = useTeleporterString;
+                    EditorUtility.DisplayDialog("Converted to teleporter pair", "Successfully converted to Interact Teleporter pair.", "Arigato!");
+                }
+                else if (teleporterMode == "Region Teleporter")
+				{
+                    Debug.Log("Generating Region Teleporter");
+                    //Add and apply teleporter
+                    sourceGO.AddUdonSharpComponent<Tanuki.TanukiTeleporterRegion>();
+                    Tanuki.TanukiTeleporterRegion sourceTele = sourceGO.GetUdonSharpComponent<Tanuki.TanukiTeleporterRegion>();
+                    //sourceTele.UpdateProxy();
+                    sourceTele.teleportTo = targetGO.transform;
+                    sourceTele.ApplyProxyModifications();
+
+                    targetGO.AddUdonSharpComponent<Tanuki.TanukiTeleporterRegion>();
+                    Tanuki.TanukiTeleporterRegion targetTele = targetGO.GetUdonSharpComponent<Tanuki.TanukiTeleporterRegion>();
+                    targetTele.teleportTo = sourceGO.transform;
+                    targetTele.ApplyProxyModifications();
+                    EditorUtility.DisplayDialog("Converted to teleporter pair", "Successfully converted to Region Teleporter pair. Please note that this will likely lead to an infinite teleporter loop, this functionality should probably be avoided.", "Got it!");
+
+                    sourceGO.GetComponent<BoxCollider>().isTrigger = true;
+                    targetGO.GetComponent<BoxCollider>().isTrigger = true;
+
+                }
             }
         }
+
+        //A dropdown box to change between area-based and interact-based teleporters
+        EditorGUI.BeginChangeCheck();
+        _t_selected = EditorGUILayout.Popup("Teleporter Mode", _t_selected, _t_options);
+        if (EditorGUI.EndChangeCheck())
+		{
+            teleporterMode = _t_options[_t_selected];
+		}
+
+
         EditorGUILayout.EndVertical();
         
         //Add a footer
         GUILayout.FlexibleSpace();
-        GUILayout.Label("TanukiUdon v0.0.2", EditorStyles.boldLabel);
+        GUILayout.Label("TanukiUdon v0.0.3", EditorStyles.boldLabel);
     }
     Texture2D CreateBackgroundColorImage(UnityEngine.Color color)
     {
