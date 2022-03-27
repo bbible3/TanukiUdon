@@ -4,7 +4,7 @@ using VRC.SDK3.Components;
 using VRC.Udon;
 using UdonSharp;
 using UdonSharpEditor;
-public class TanukiUdonWindow : EditorWindow
+public partial class TanukiUdonWindow : EditorWindow
 {
     public static TanukiUdonWindow window;
     //Make the TanukiUdon window selection appear in Window toolbar tab
@@ -94,6 +94,8 @@ public class TanukiUdonWindow : EditorWindow
         showPickupTools = EditorGUILayout.Foldout(showPickupTools, "Pickup Tools");
         if (showPickupTools)
 		{
+            ShowPickupEditor();
+            /*
             //Add VRC Pickup and ObjectSync
             GUILayout.Label("Convert selected GameObject(s) to synced VRCPickups", EditorStyles.label);
             //Make toggle and let it update
@@ -124,7 +126,9 @@ public class TanukiUdonWindow : EditorWindow
                     countMakePickup++;
                 }
                 EditorUtility.DisplayDialog("Converted to pickup", "Successfully converted " + countMakePickup + " items to pickups.", "Arigato!");
-            }    
+           
+            }
+            */
         }
         EditorGUILayout.EndVertical();
         GUILayout.Space(15f);
