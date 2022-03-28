@@ -9,12 +9,12 @@ using VRC.Udon;
 
 namespace Tanuki
 {
-    public class TanukiTeleporter : UdonSharpBehaviour
+    public class TanukiTeleporterRegion : UdonSharpBehaviour
     {
         public Transform teleportTo;
         public VRC_SceneDescriptor.SpawnOrientation teleportOrientation = VRC_SceneDescriptor.SpawnOrientation.AlignPlayerWithSpawnPoint;
         public bool lerpOnRemote = false;
-        public override void Interact()
+        public virtual void OnPlayerTriggerEnter(VRC.SDKBase.VRCPlayerApi player)
 		{
                 Networking.LocalPlayer.TeleportTo(teleportTo.position, teleportTo.rotation, teleportOrientation, lerpOnRemote);
 		}

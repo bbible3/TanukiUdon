@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: TanukiTeleporter
+  m_Name: TanukiTeleporterRegion
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 5cfb7542f16ac284994949e4d16f073c,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 069781836d621d9419f4168efc9c78e3,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: 1a812d387c519ac418218d99e7e4e666, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 33b0f16d16d270744ba66d279d846510, type: 3}
   behaviourSyncMode: 0
   behaviourIDHeapVarName: __refl_const_intnl_udonTypeID
   compileErrors: []
-  hasInteractEvent: 1
+  hasInteractEvent: 0
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
