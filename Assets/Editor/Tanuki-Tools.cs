@@ -213,8 +213,21 @@ public partial class TanukiUdonWindow : EditorWindow
                 }
             }
         }
-
+        
 
         EditorGUILayout.EndVertical();
+
+        if (GUILayout.Button("Test CSV"))
+        {
+            Debug.Log("Testing CSV...");
+            TanukiCSV.DownloadCSV("https://raw.githubusercontent.com/CS540-22/TanukiUdon540/main/rpdb.csv");
+
+        }
+    }
+
+    void testCSV(string csv)
+    {
+        Debug.Log("Testing");
+        Debug.Log(csv);
     }
 }
