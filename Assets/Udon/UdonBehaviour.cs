@@ -116,7 +116,7 @@ namespace VRC.Udon
         public static Action<UdonBehaviour> RequestSerializationHook { get; set; } = null;
 
         [PublicAPI]
-        public static Action<UdonBehaviour, NetworkEventTarget, string> SendCustomNetworkEventHook { get; set; } = null;
+        public static Action<UdonBehaviour, NetworkEventTarget, string> SendCustomNetworkEventHook { get; set; } = LoopbackSendCustomNetworkEvent;
 
         [PublicAPI]
         public override bool DisableInteractive { get; set; }
@@ -1429,11 +1429,21 @@ namespace VRC.Udon
 
         public override void SendCustomNetworkEvent(NetworkEventTarget target, string eventName)
         {
-            #if UNITY_EDITOR
-            SendCustomEvent(eventName);
-            #else
             SendCustomNetworkEventHook?.Invoke(this, target, eventName);
-            #endif
+        }
+
+        private static void LoopbackSendCustomNetworkEvent(UdonBehaviour target, NetworkEventTarget netTarget,
+            string eventName)
+        {
+            if (target == null || target.SyncMethod == Networking.SyncType.None || string.IsNullOrEmpty(eventName))
+                return;
+
+            if (eventName[0] == '_')
+            {
+                Debug.LogWarning($"Can't send event '{eventName}' as an RPC because it begins with an underscore.");
+                return;
+            }
+            target.SendCustomEvent(eventName);
         }
 
         public override void RequestSerialization()
