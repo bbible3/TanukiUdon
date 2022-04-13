@@ -5,29 +5,73 @@ using System.Net;
 using System.IO;
 using UnityEngine.Networking;
 
+
+public class TRow
+{
+    public List<string> row;
+    public int id;
+    public string title;
+    public List<string> tags;
+    public string image;
+    public string informationLink;
+    public string downloadLink;
+    public string dateAdded;
+    
+    public TRow(List<string> row)
+    {
+        this.row = row;
+        id = 0;
+        int.TryParse(row[0],out this.id);
+        title = row[1];
+        tags = new List<string>(row[2].Split(','));
+        image = row[3];
+        informationLink = row[4];
+        downloadLink = row[5];
+        dateAdded = row[6];
+    }
+}
 public class TCSV
 {
-    public string text;
-    public string[] rows;
+    public string text = "";
+    public List<string> rows = new List<string>();
+    private int numRows = 0;
 
     //Split the CSV file into rows
-    public string[] SplitCSV(string csv)
+    public List<string> SplitCSV(string csv)
     {
         string[] rows = csv.Split("\n"[0]);
-        return rows;
+        List<string> rowsList;
+        rowsList = new List<string>(rows);
+        this.numRows = rowsList.Count;
+        return rowsList;
     }
-
+    public List<string> SplitRow(string row)
+    {
+        //Seperate row into columns
+        string[] columns = row.Split("\t"[0]);
+        List<string> columnsList;
+        columnsList = new List<string>(columns);
+        //Debug.Log("Split row into " + columnsList.Count + " columns");
+        return columnsList;
+    }
+    public List<string> lineAt(int index)
+    {
+        string row = this.rows[index];
+        return SplitRow(row);
+    }
     //Return the number of rows in the CSV file
     public int GetNumRows()
     {
-        return rows.Length;
+        //Return the length of the string List rows
+        return numRows;
     }
     
     //Constructor
     public TCSV(string text)
     {
         this.text = text;
-        this.SplitCSV(text);
+        this.rows = this.SplitCSV(text);
+        this.numRows = this.rows.Count;
     }
 
 }
@@ -53,7 +97,7 @@ public class TanukiCSV : MonoBehaviour
     }
 
     // Download a file from a URL with UnityWebRequest
-    public static TCSV DownloadCSV(string url)
+    public static string DownloadCSVString(string url)
     {
         UnityWebRequest www = UnityWebRequest.Get(url);
         www.SendWebRequest();
@@ -68,11 +112,9 @@ public class TanukiCSV : MonoBehaviour
         else
         {
             // Show results as text
-            Debug.Log(www.downloadHandler.text);
-            TCSV newCSV = new TCSV(www.downloadHandler.text);
+            //Debug.Log(www.downloadHandler.text);
+            string newCSV =www.downloadHandler.text;
             return newCSV;
-            // Or retrieve results as binary data
-            byte[] results = www.downloadHandler.data;
         }
         return null;
     }

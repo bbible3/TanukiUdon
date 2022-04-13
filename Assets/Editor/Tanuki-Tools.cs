@@ -220,17 +220,24 @@ public partial class TanukiUdonWindow : EditorWindow
         if (GUILayout.Button("Test CSV"))
         {
             Debug.Log("Testing CSV...");
-           
-            TCSV remoteCSV = TanukiCSV.DownloadCSV("https://raw.githubusercontent.com/CS540-22/TanukiUdon540/main/rpdb.csv");
-            //Print the number of lines in the CSV object
-            Debug.Log("Number of lines in CSV: " + remoteCSV.GetNumRows());
+
+
+            string tsvString = TanukiCSV.DownloadCSVString("https://raw.githubusercontent.com/CS540-22/TanukiUdon540/main/rpdb.tsv");
+            TCSV ourCSV = new TCSV(tsvString);
+            TRow secondRow = new TRow(ourCSV.lineAt(1));
+
+            int numItems = ourCSV.GetNumRows();
+            Debug.Log("Num items: " + numItems);
+
+            //For numItems
+            for (int i = 0; i < numItems; i++)
+            {
+                TRow row = new TRow(ourCSV.lineAt(i));
+                Debug.Log("Item found: " + row.title);
+            }
 
         }
     }
 
-    void testCSV(string csv)
-    {
-        Debug.Log("Testing");
-        Debug.Log(csv);
-    }
+
 }

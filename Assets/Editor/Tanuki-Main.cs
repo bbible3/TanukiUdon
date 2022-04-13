@@ -8,7 +8,7 @@ public partial class TanukiUdonWindow : EditorWindow
 {
     public static TanukiUdonWindow window;
     //Make the TanukiUdon window selection appear in Window toolbar tab
-    [MenuItem("Window/TanukiUdon")]
+    [MenuItem("Window/TanukiUdonn")]
 
     //Makes the UI actually work
     public static void ShowWindow()
