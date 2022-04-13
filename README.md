@@ -15,7 +15,7 @@ Currently in progress on Milestone 5. Issues have been somewhat restructured, bu
 **Currently producing Milestone 5.1: Autocomplete and Milestone 4.2: Documentation. Milestone 5.2: Code Search is nearly complete.**
 ![progress-overall-75](https://user-images.githubusercontent.com/46682358/163190791-94fc5b3c-2634-4843-af7b-6bdc3530d4be.png) ~75%
 
-50% of all opened issues are cloesed, and many more are nearly complete considering the current state of the Plastic SCM repo.
+50% of all opened issues are closed, and many more are nearly complete considering the current state of the Plastic SCM repo.
 In its current state, TanukiUdon is installable, helpful, and ready to be tested.
 
 TanukiUdon's automation tools are able to automate many development activities: (single interact teleporter, single area teleporter, teleporter pairs, removing teleporters, creating/removing interactables, acquiring assets in multiple categories.) Each of these activities takes approximately 5 steps when completed manually, but only one step using TanukiUdon. Additionally, these concepts are not necessarily clearly explained externally. In its current state of 75% completion, we estimate **TanukiUdon accelerates basic world creation by 2-3x. We expect 5x acceleration upon final milestone completion.**
