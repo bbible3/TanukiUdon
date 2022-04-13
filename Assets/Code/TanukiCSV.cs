@@ -5,8 +5,36 @@ using System.Net;
 using System.IO;
 using UnityEngine.Networking;
 
+public class TCSV
+{
+    public string text;
+    public string[] rows;
+
+    //Split the CSV file into rows
+    public string[] SplitCSV(string csv)
+    {
+        string[] rows = csv.Split("\n"[0]);
+        return rows;
+    }
+
+    //Return the number of rows in the CSV file
+    public int GetNumRows()
+    {
+        return rows.Length;
+    }
+    
+    //Constructor
+    public TCSV(string text)
+    {
+        this.text = text;
+        this.SplitCSV(text);
+    }
+
+}
 public class TanukiCSV : MonoBehaviour
 {
+    public string csvtext = "";
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +53,7 @@ public class TanukiCSV : MonoBehaviour
     }
 
     // Download a file from a URL with UnityWebRequest
-    public static void DownloadCSV(string url)
+    public static TCSV DownloadCSV(string url)
     {
         UnityWebRequest www = UnityWebRequest.Get(url);
         www.SendWebRequest();
@@ -41,9 +69,12 @@ public class TanukiCSV : MonoBehaviour
         {
             // Show results as text
             Debug.Log(www.downloadHandler.text);
+            TCSV newCSV = new TCSV(www.downloadHandler.text);
+            return newCSV;
             // Or retrieve results as binary data
             byte[] results = www.downloadHandler.data;
         }
+        return null;
     }
 
 }
