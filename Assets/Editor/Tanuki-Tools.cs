@@ -224,7 +224,7 @@ public partial class TanukiUdonWindow : EditorWindow
 
             string tsvString = TanukiCSV.DownloadCSVString("https://raw.githubusercontent.com/CS540-22/TanukiUdon540/main/rpdb.tsv");
             TCSV ourCSV = new TCSV(tsvString);
-            TRow secondRow = new TRow(ourCSV.lineAt(1));
+            
 
             int numItems = ourCSV.GetNumRows();
             Debug.Log("Num items: " + numItems);
@@ -234,6 +234,7 @@ public partial class TanukiUdonWindow : EditorWindow
             {
                 TRow row = new TRow(ourCSV.lineAt(i));
                 Debug.Log("Item found: " + row.title);
+                Debug.Log("Description: " + row.description);
             }
 
         }

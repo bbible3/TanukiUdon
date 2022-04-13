@@ -8,7 +8,7 @@ public partial class TanukiUdonWindow : EditorWindow
 {
     public static TanukiUdonWindow window;
     //Make the TanukiUdon window selection appear in Window toolbar tab
-    [MenuItem("Window/TanukiUdonn")]
+    [MenuItem("Window/TanukiUdon")]
 
     //Makes the UI actually work
     public static void ShowWindow()
@@ -16,7 +16,7 @@ public partial class TanukiUdonWindow : EditorWindow
         window = (TanukiUdonWindow)EditorWindow.GetWindow<TanukiUdonWindow>("TanukiUdon");
         window.InitializeStyles();
     }
-    
+
     // Needed for ToolBar
     int whichPanel = 0;
 
@@ -36,16 +36,16 @@ public partial class TanukiUdonWindow : EditorWindow
         headingGUIStyle = new GUIStyle();
         paragraphGUIStyle = new GUIStyle();
         downloadBtnStyle = new GUIStyle(GUI.skin.button);
-        
+
         titleGUIStyle.fontSize = 32;
         titleGUIStyle.fontStyle = FontStyle.BoldAndItalic;
         titleGUIStyle.alignment = TextAnchor.MiddleCenter;
         titleGUIStyle.wordWrap = true;
-        
+
         headingGUIStyle.fontStyle = FontStyle.Bold;
         headingGUIStyle.fontSize = 16;
         headingGUIStyle.alignment = TextAnchor.MiddleCenter;
-        
+
         paragraphGUIStyle.wordWrap = true;
         paragraphGUIStyle.alignment = TextAnchor.MiddleCenter;
 
@@ -76,7 +76,7 @@ public partial class TanukiUdonWindow : EditorWindow
             if (_DownloadLogo == null)
                 _DownloadLogo = Resources.Load<Texture2D>("download-icon-black");
         }
-        
+
         downloadBtnContent = new GUIContent(_DownloadLogo);
     }
 
@@ -112,7 +112,7 @@ public partial class TanukiUdonWindow : EditorWindow
         EditorGUILayout.Space(20f);
 
         whichPanel = GUILayout.Toolbar(whichPanel, _toolbarLabels);
-        GUILayout.Space(5f); 
+        GUILayout.Space(5f);
 
         switch (whichPanel)
         {
@@ -129,7 +129,7 @@ public partial class TanukiUdonWindow : EditorWindow
                 ShowTools();
                 break;
         }
-        
+
         // Footer
         GUILayout.FlexibleSpace();
         GUILayout.Label("TanukiUdon v0.0.4", EditorStyles.boldLabel);

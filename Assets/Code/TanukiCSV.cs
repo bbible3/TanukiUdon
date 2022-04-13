@@ -11,6 +11,7 @@ public class TRow
     public List<string> row;
     public int id;
     public string title;
+    public string description;
     public List<string> tags;
     public string image;
     public string informationLink;
@@ -23,11 +24,12 @@ public class TRow
         id = 0;
         int.TryParse(row[0],out this.id);
         title = row[1];
-        tags = new List<string>(row[2].Split(','));
-        image = row[3];
-        informationLink = row[4];
-        downloadLink = row[5];
-        dateAdded = row[6];
+        description = row[2];
+        tags = new List<string>(row[3].Split(','));
+        image = row[4];
+        informationLink = row[5];
+        downloadLink = row[6];
+        dateAdded = row[7];
     }
 }
 public class TCSV
