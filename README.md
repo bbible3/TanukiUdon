@@ -10,3 +10,8 @@ TanukiUdon is a suite of developer tools to make developing in Unity easier and 
 ## Progress
 Currently in progress on Sprint 2. On track to finish on time.
 *Note: Unity Collaboration tools are being used for portions of this project. Content is stored locally in the [Unity-Home-Tanuki-Udon](Unity-Home-Tanuki-Udon/) folder and is available for download from Unity's servers. Assume that Unity's version is the latest. Files stored on this repo are our code - importing the VRCSDK into a Unity project manually is required. Where this folder is the root folder named "TanukiUdon540", the structure should essentially be: *(TanukiUdon540/Unity-Home-Tanuki-Udon/Tanuki Udon)* - with the *Tanuki Udon* folder containing ./Assets, ./Library, etc.
+
+
+## Code Snippets Feature
+The latest revision of TanukiUdon includes a feature to display and download commonly used VRChat assets and tools.
+![image](https://user-images.githubusercontent.com/46682358/163099991-567dca97-6749-43c0-a341-58a5d7f396a1.png)
