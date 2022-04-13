@@ -16,46 +16,75 @@ public partial class TanukiUdonWindow : EditorWindow
         window = (TanukiUdonWindow)EditorWindow.GetWindow<TanukiUdonWindow>("TanukiUdon");
         window.InitializeStyles();
     }
-    
+
     // Needed for ToolBar
     int whichPanel = 0;
 
     // Styles
     public static GUIStyle titleGUIStyle;
     public static GUIStyle boxGUIStyle;
+    public static GUIStyle headingGUIStyle;
+    public static GUIStyle paragraphGUIStyle;
+    public static GUIStyle downloadBtnStyle;
     static Texture _TanukiLogo;
-
+    static Texture _DownloadLogo;
+    private GUIContent downloadBtnContent;
     void InitializeStyles()
     {
         titleGUIStyle = new GUIStyle();
+        boxGUIStyle = new GUIStyle();
+        headingGUIStyle = new GUIStyle();
+        paragraphGUIStyle = new GUIStyle();
+        downloadBtnStyle = new GUIStyle(GUI.skin.button);
+
         titleGUIStyle.fontSize = 32;
         titleGUIStyle.fontStyle = FontStyle.BoldAndItalic;
         titleGUIStyle.alignment = TextAnchor.MiddleCenter;
         titleGUIStyle.wordWrap = true;
-        if (EditorGUIUtility.isProSkin)
-            titleGUIStyle.normal.textColor = Color.white;
-        else
-            titleGUIStyle.normal.textColor = Color.black;
-        
-        boxGUIStyle = new GUIStyle();
+
+        headingGUIStyle.fontStyle = FontStyle.Bold;
+        headingGUIStyle.fontSize = 16;
+        headingGUIStyle.alignment = TextAnchor.MiddleCenter;
+
+        paragraphGUIStyle.wordWrap = true;
+        paragraphGUIStyle.alignment = TextAnchor.MiddleCenter;
+
+        downloadBtnStyle.padding = new RectOffset(-7, -7, -7, -7);
+
         if (EditorGUIUtility.isProSkin)
         {
             boxGUIStyle.normal.background = CreateBackgroundColorImage(new Color(0.3f, 0.3f, 0.3f));
             boxGUIStyle.normal.textColor = Color.white;
+            headingGUIStyle.normal.textColor = Color.white;
+            titleGUIStyle.normal.textColor = Color.white;
+            paragraphGUIStyle.normal.textColor = Color.white;
+            downloadBtnStyle.normal.textColor = Color.white;
+
+            // Load Download Logo
+            if (_DownloadLogo == null)
+                _DownloadLogo = Resources.Load<Texture2D>("download-icon-white");
         }
         else
         {
             boxGUIStyle.normal.background = CreateBackgroundColorImage(new Color(0.85f, 0.85f, 0.85f));
             boxGUIStyle.normal.textColor = Color.black;
+            headingGUIStyle.normal.textColor = Color.black;
+            titleGUIStyle.normal.textColor = Color.black;
+            paragraphGUIStyle.normal.textColor = Color.black;
+            downloadBtnStyle.normal.textColor = Color.black;
+            // Load Download Logo
+            if (_DownloadLogo == null)
+                _DownloadLogo = Resources.Load<Texture2D>("download-icon-black");
         }
-        
+
+        downloadBtnContent = new GUIContent(_DownloadLogo);
     }
 
     private readonly GUIContent[] _toolbarLabels = new GUIContent[3]
     {
         new GUIContent("Tools"),
         new GUIContent("Documentation"),
-        new GUIContent("WHatever")
+        new GUIContent("Code Snippets")
     };
 
     void OnGUI()
@@ -83,7 +112,7 @@ public partial class TanukiUdonWindow : EditorWindow
         EditorGUILayout.Space(20f);
 
         whichPanel = GUILayout.Toolbar(whichPanel, _toolbarLabels);
-        GUILayout.Space(5f); 
+        GUILayout.Space(5f);
 
         switch (whichPanel)
         {
@@ -94,13 +123,13 @@ public partial class TanukiUdonWindow : EditorWindow
                 ShowDocumentation();
                 break;
             case 2:
-                ShowWhatever();
+                ShowCodeSnippets();
                 break;
             default:
                 ShowTools();
                 break;
         }
-        
+
         // Footer
         GUILayout.FlexibleSpace();
         GUILayout.Label("TanukiUdon v0.0.4", EditorStyles.boldLabel);

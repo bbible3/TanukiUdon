@@ -213,8 +213,32 @@ public partial class TanukiUdonWindow : EditorWindow
                 }
             }
         }
-
+        
 
         EditorGUILayout.EndVertical();
+
+        if (GUILayout.Button("Test CSV"))
+        {
+            Debug.Log("Testing CSV...");
+
+
+            string tsvString = TanukiCSV.DownloadCSVString("https://raw.githubusercontent.com/CS540-22/TanukiUdon540/main/rpdb.tsv");
+            TCSV ourCSV = new TCSV(tsvString);
+            
+
+            int numItems = ourCSV.GetNumRows();
+            Debug.Log("Num items: " + numItems);
+
+            //For numItems
+            for (int i = 0; i < numItems; i++)
+            {
+                TRow row = new TRow(ourCSV.lineAt(i));
+                Debug.Log("Item found: " + row.title);
+                Debug.Log("Description: " + row.description);
+            }
+
+        }
     }
+
+
 }
