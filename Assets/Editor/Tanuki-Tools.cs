@@ -235,6 +235,11 @@ public partial class TanukiUdonWindow : EditorWindow
                 TRow row = new TRow(ourCSV.lineAt(i));
                 Debug.Log("Item found: " + row.title);
                 Debug.Log("Description: " + row.description);
+                foreach(var tag in row.tags)
+                {
+                    Debug.Log("Tag: " + tag);
+                }
+                Debug.Log("DL Link " + row.downloadLink);
             }
 
         }
