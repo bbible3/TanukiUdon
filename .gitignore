@@ -73,8 +73,12 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Removing a bunch of Assets used in Dev but don't need to be on git
+/Packages
 /[Aa]ssets/[Cc]yan[Ee]mu/
 /[Aa]ssets/[Uu]don/
 /[Aa]ssets/VRCSDK/
 /[As]ssets/[Ss]hader[Tt]oy/
 /[Aa]ssets/[Uu]don[Ss]harp/
+/[Aa]ssets/[Gg]izmos/
+/[Aa]ssets/[Ss]cenes/
+/[Aa]ssets/VRChat Examples/
