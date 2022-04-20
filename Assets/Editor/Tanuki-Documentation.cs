@@ -11,7 +11,7 @@ public partial class TanukiUdonWindow : EditorWindow
     {
         EditorGUILayout.BeginVertical();
 
-        GUILayout.Label("Insert Documentation Here");
+        GUILayout.Label("Insert Documentation Here via TSV");
 
         EditorGUILayout.EndVertical();
     }
