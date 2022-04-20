@@ -132,7 +132,7 @@ public partial class TanukiUdonWindow : EditorWindow
 
         // Footer
         GUILayout.FlexibleSpace();
-        GUILayout.Label("TanukiUdon v0.0.4", EditorStyles.boldLabel);
+        GUILayout.Label("TanukiUdon v0.0.5", EditorStyles.boldLabel);
     }
 
     Texture2D CreateBackgroundColorImage(UnityEngine.Color color)
