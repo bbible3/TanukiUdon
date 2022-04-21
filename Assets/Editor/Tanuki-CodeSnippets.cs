@@ -50,7 +50,7 @@ public partial class TanukiUdonWindow : EditorWindow
             EditorGUILayout.Space(15f);
             foreach(var tag in row.tags)
             {
-                Debug.Log("Tag: " + tag);
+                //Debug.Log("Tag: " + tag);
             }
         }
         EditorGUILayout.EndScrollView();

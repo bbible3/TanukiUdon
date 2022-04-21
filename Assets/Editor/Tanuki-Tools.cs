@@ -4,6 +4,7 @@ using VRC.SDK3.Components;
 using VRC.Udon;
 using UdonSharp;
 using UdonSharpEditor;
+using System;
 
 public partial class TanukiUdonWindow : EditorWindow
 {
@@ -161,7 +162,66 @@ public partial class TanukiUdonWindow : EditorWindow
                         else if (teleporterMode == "Region Teleporter")
                         {
                             obj.AddUdonSharpComponent<Tanuki.TanukiTeleporterRegion>();
-                            obj.GetComponent<BoxCollider>().isTrigger = true;
+                            bool updatedTrigger = false;
+
+                            if (updatedTrigger == false)
+                            {
+                                //In a try block, set isTrigger to true for a box collider
+                                try
+                                {
+                                    obj.GetComponent<BoxCollider>().isTrigger = true;
+                                    updatedTrigger = true;
+                                }
+                                catch (Exception e)
+                                {
+                                    Debug.Log("Could not set isTrigger to true for box collider on " + obj.name + ": " + e.Message);
+
+                                }
+                            }
+                            if (updatedTrigger == false)
+                            {
+                                try
+                                {
+                                    obj.GetComponent<SphereCollider>().isTrigger = true;
+                                    updatedTrigger = true;
+                                }
+                                catch (Exception e)
+                                {
+                                    Debug.Log("Could not set isTrigger to true for sphere collider on " + obj.name + ": " + e.Message);
+
+                                }
+                            }
+
+                            //For capsule collider
+                            if (updatedTrigger == false)
+                            {
+                                try
+                                {
+                                    obj.GetComponent<CapsuleCollider>().isTrigger = true;
+                                    updatedTrigger = true;
+                                }
+                                catch (Exception e)
+                                {
+                                    Debug.Log("Could not set isTrigger to true for capsule collider on " + obj.name + ": " + e.Message);
+
+                                }
+                            }
+                            
+                            //For mesh collider
+                            if (updatedTrigger == false)
+                            {
+                                try
+                                {
+                                    obj.GetComponent<MeshCollider>().isTrigger = true;
+                                    updatedTrigger = true;
+                                }
+                                catch (Exception e)
+                                {
+                                    Debug.Log("Could not set isTrigger to true for mesh collider on " + obj.name + ": " + e.Message);
+
+                                }
+                            }
+                            
                         }
                         //To change InteractionText, we must get the UdonBehaviour component
                         UdonBehaviour objBeh = obj.GetComponent<UdonBehaviour>();
@@ -217,10 +277,10 @@ public partial class TanukiUdonWindow : EditorWindow
 
         EditorGUILayout.EndVertical();
 
-        if (GUILayout.Button("Test CSV"))
+        /*if (GUILayout.Button("Test CSV"))
         {
             Debug.Log("Testing CSV...");
-
+            
 
             string tsvString = TanukiCSV.DownloadCSVString("https://raw.githubusercontent.com/CS540-22/TanukiUdon540/main/rpdb.tsv");
             TCSV ourCSV = new TCSV(tsvString);
@@ -242,7 +302,7 @@ public partial class TanukiUdonWindow : EditorWindow
                 Debug.Log("DL Link " + row.downloadLink);
             }
 
-        }
+        }*/
     }
 
 
