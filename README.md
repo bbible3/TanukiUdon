@@ -12,21 +12,22 @@ Currently in progress on Milestone 5. Issues have been somewhat restructured, bu
 
 *Note: Unity Collaboration tools are being used for portions of this project. Content is stored locally in the [Unity-Home-Tanuki-Udon](Unity-Home-Tanuki-Udon/) folder and is available for download from Unity's servers. Assume that Unity's version is the latest. Files stored on this repo are our code - importing the VRCSDK into a Unity project manually is required. Where this folder is the root folder named "TanukiUdon540", the structure should essentially be: *(TanukiUdon540/Unity-Home-Tanuki-Udon/Tanuki Udon)* - with the *Tanuki Udon* folder containing ./Assets, ./Library, etc.
 
-**Currently producing Milestone 5.1: Autocomplete and Milestone 4.2: Documentation. Milestone 5.2: Code Search is nearly complete.**
-![progress-overall-75](https://user-images.githubusercontent.com/46682358/163190791-94fc5b3c-2634-4843-af7b-6bdc3530d4be.png) ~75%
+**Currently producing Milestone 5.1: Autocomplete and Milestone 4.2: Documentation. Milestone 5.2: Code Search is complete.**
+![progress-overall-75](https://user-images.githubusercontent.com/46682358/163190791-94fc5b3c-2634-4843-af7b-6bdc3530d4be.png) ~80%
 
 50% of all opened issues are closed, and many more are nearly complete considering the current state of the Plastic SCM repo.
 In its current state, TanukiUdon is installable, helpful, and ready to be tested.
 
-TanukiUdon's automation tools are able to automate many development activities: (single interact teleporter, single area teleporter, teleporter pairs, removing teleporters, creating/removing interactables, acquiring assets in multiple categories.) Each of these activities takes approximately 5 steps when completed manually, but only one step using TanukiUdon. Additionally, these concepts are not necessarily clearly explained externally. In its current state of 75% completion, we estimate **TanukiUdon accelerates basic world creation by 2-3x. We expect 5x acceleration upon final milestone completion.**
+TanukiUdon's automation tools are able to automate many development activities: (single interact teleporter, single area teleporter, teleporter pairs, removing teleporters, creating/removing interactables, acquiring assets in multiple categories.) Each of these activities takes approximately 5 steps when completed manually, but only one step using TanukiUdon. Additionally, these concepts are not necessarily clearly explained externally. In its current state of 80% completion, we estimate **TanukiUdon accelerates basic world creation by 2-3x. We expect 5x acceleration upon final milestone completion.**
 
 Though each of these individually automated tasks takes only a few moments, learning to do so and repeatedly doing so can add hours to the world creation time.
 
-It is difficult to measure development productivity as this repo is periodically updated (currently at 49 commits) from the Unity version control. Developers are successfully receiving, assigning, and responding to issues, and all commits have been meregd without issue - meaning nearly all work could be considered productive.
+It is difficult to measure development productivity as this repo is periodically updated (currently at 79 commits) from the Unity version control. Developers are successfully receiving, assigning, and responding to issues, and all commits have been meregd without issue - meaning nearly all work could be considered productive.
 
 
 
 
 ## Code Snippets Feature
-The latest revision of TanukiUdon includes a feature to display and download commonly used VRChat assets and tools.
-![image](https://user-images.githubusercontent.com/46682358/163099991-567dca97-6749-43c0-a341-58a5d7f396a1.png)
+The latest revision of TanukiUdon includes a feature to display and download commonly used VRChat assets and tools, automatically updated from a database stored on our GitHub.
+
+![image](https://user-images.githubusercontent.com/46682358/164244970-ac3ba81f-a4f0-4f52-adf2-c49d91f63ea8.png)
