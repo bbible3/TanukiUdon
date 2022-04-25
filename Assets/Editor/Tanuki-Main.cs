@@ -28,7 +28,10 @@ public partial class TanukiUdonWindow : EditorWindow
     public static GUIStyle downloadBtnStyle;
     static Texture _TanukiLogo;
     static Texture _DownloadLogo;
+    static Texture _PopoutLogo;
+
     private GUIContent downloadBtnContent;
+    private GUIContent popoutBtnContent;
     void InitializeStyles()
     {
         titleGUIStyle = new GUIStyle();
@@ -53,31 +56,39 @@ public partial class TanukiUdonWindow : EditorWindow
 
         if (EditorGUIUtility.isProSkin)
         {
+            titleGUIStyle.normal.textColor = Color.white;
             boxGUIStyle.normal.background = CreateBackgroundColorImage(new Color(0.3f, 0.3f, 0.3f));
             boxGUIStyle.normal.textColor = Color.white;
             headingGUIStyle.normal.textColor = Color.white;
-            titleGUIStyle.normal.textColor = Color.white;
             paragraphGUIStyle.normal.textColor = Color.white;
-            downloadBtnStyle.normal.textColor = Color.white;
 
             // Load Download Logo
             if (_DownloadLogo == null)
                 _DownloadLogo = Resources.Load<Texture2D>("download-icon-white");
+
+            // Load Pop-Out Logo
+            if (_PopoutLogo == null)
+                _PopoutLogo = Resources.Load<Texture2D>("pop-out-white");
         }
         else
         {
+            titleGUIStyle.normal.textColor = Color.black;
             boxGUIStyle.normal.background = CreateBackgroundColorImage(new Color(0.85f, 0.85f, 0.85f));
             boxGUIStyle.normal.textColor = Color.black;
             headingGUIStyle.normal.textColor = Color.black;
-            titleGUIStyle.normal.textColor = Color.black;
             paragraphGUIStyle.normal.textColor = Color.black;
-            downloadBtnStyle.normal.textColor = Color.black;
+
             // Load Download Logo
             if (_DownloadLogo == null)
                 _DownloadLogo = Resources.Load<Texture2D>("download-icon-black");
+
+            // Load Pop-Out Logo
+            if (_PopoutLogo == null)
+                _PopoutLogo = Resources.Load<Texture2D>("pop-out-black");
         }
 
         downloadBtnContent = new GUIContent(_DownloadLogo);
+        popoutBtnContent = new GUIContent(_PopoutLogo);
     }
 
     private readonly GUIContent[] _toolbarLabels = new GUIContent[3]

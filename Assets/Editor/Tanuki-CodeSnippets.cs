@@ -7,26 +7,25 @@ using UdonSharpEditor;
 
 public partial class TanukiUdonWindow : EditorWindow
 {
-    Vector2 scrollPos;
+    Vector2 codeScrollPos;
     void ShowCodeSnippets()
     {
         EditorGUILayout.Space(8f);
         EditorGUILayout.BeginVertical();
 
-        scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
+        codeScrollPos = EditorGUILayout.BeginScrollView(codeScrollPos);
 
         // Source the info for our Code SNippets
-        string tsvString = TanukiCSV.DownloadCSVString("https://raw.githubusercontent.com/CS540-22/TanukiUdon540/main/rpdb.tsv");
-        TCSV ourCSV = new TCSV(tsvString);
+        string tsvString = TanukiCSV.DownloadCSVString("https://raw.githubusercontent.com/CS540-22/TanukiUdon540/main/Code_Snippets_db.tsv");
+        TCSV ourTSV = new TCSV(tsvString);
         
 
-        int numItems = ourCSV.GetNumRows();
-        Debug.Log("Num items: " + numItems);
+        int numItems = ourTSV.GetNumRows();
 
         // Skip the first tiem since its useless info for the user
         for (int i = 1; i < numItems; i++)
         {
-            TRow row = new TRow(ourCSV.lineAt(i));
+            TRow row = new TRow(ourTSV.lineAt(i));
 
             // Heading
             EditorGUILayout.LabelField(row.title, headingGUIStyle);
