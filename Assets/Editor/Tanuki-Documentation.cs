@@ -17,15 +17,15 @@ public partial class TanukiUdonWindow : EditorWindow
 
         // Source the info for our Code SNippets
         string tsvString = TanukiCSV.DownloadCSVString("https://raw.githubusercontent.com/CS540-22/TanukiUdon540/main/Doc_Snippets.tsv");
-        TCSV ourTSV = new TCSV(tsvString);
+        TCSV docTSV = new TCSV(tsvString);
         
 
-        int numItems = ourTSV.GetNumRows();
+        int numItems = docTSV.GetNumRows();
 
         // Skip the first tiem since its useless info for the user
         for (int i = 1; i < numItems; i++)
         {
-            TRow row = new TRow(ourTSV.lineAt(i));
+            TRow row = new TRow(docTSV.lineAt(i));
 
             // Heading
             EditorGUILayout.LabelField(row.title, headingGUIStyle);

@@ -38,7 +38,7 @@ public partial class TanukiUdonWindow : EditorWindow
         boxGUIStyle = new GUIStyle();
         headingGUIStyle = new GUIStyle();
         paragraphGUIStyle = new GUIStyle();
-        downloadBtnStyle = new GUIStyle(GUI.skin.button);
+        downloadBtnStyle = new GUIStyle("button");
 
         titleGUIStyle.fontSize = 32;
         titleGUIStyle.fontStyle = FontStyle.BoldAndItalic;
